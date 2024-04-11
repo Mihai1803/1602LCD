@@ -1,0 +1,12 @@
+# This file is used to specify the version of the Rust toolchain that 
+# should be used for your project.
+
+[toolchain]
+# The release to be used.
+channel = "1.75"
+# The targets for compilation that need to be added. This is used for 
+# cross-compilation, as the executables we are producing need to be
+# run on our boards.
+targets = ["thumbv6m-none-eabi"]
+# The additional componets to be installed along the Rust toolchain
+components = ["rust-src", "rustfmt", "llvm-tools", "clippy"]
