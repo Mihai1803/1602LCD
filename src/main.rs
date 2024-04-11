@@ -1,7 +1,6 @@
 #![no_std]
 #![no_main]
 
-//use core::panic::PanicInfo;
 use embassy_executor::Spawner;
 
 // USB driver
@@ -9,10 +8,10 @@ use embassy_rp::usb::{Driver, InterruptHandler as UsbInterruptHandler};
 use embassy_rp::{bind_interrupts, peripherals::USB};
 use log::info;
 
-// time
+// Time
 use embassy_time::Delay;
 
-//LCD
+// LCD
 use embassy_rp::i2c::{I2c, Config};
 use ag_lcd::{Cursor, LcdDisplay};
 use port_expander::dev::pcf8574::Pcf8574;
@@ -48,6 +47,8 @@ async fn main(spawner: Spawner) {
     
     // Initiate Delay
     let delay = Delay;
+
+    // I2C Config
     let mut config = Config::default();
     config.frequency = DISPLAY_FREQ;
 
@@ -64,12 +65,9 @@ async fn main(spawner: Spawner) {
     // Write to LCD
     lcd.print("Hello World");
 
-
     loop {
       info!("Working");
       embassy_time::Timer::after_secs(10).await;
     }
-
-
 }
 
