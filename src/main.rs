@@ -10,6 +10,7 @@ use log::info;
 
 // Time
 use embassy_time::Delay;
+use embassy_time::Timer;
 
 // LCD
 use embassy_rp::i2c::{I2c, Config};
@@ -67,7 +68,7 @@ async fn main(spawner: Spawner) {
 
     loop {
       info!("Working");
-      embassy_time::Timer::after_secs(10).await;
+      Timer::after_secs(10).await;
     }
 }
 
